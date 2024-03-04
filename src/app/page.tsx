@@ -2,7 +2,7 @@
 import { MainCarousel } from "@/components/carousel/main-carousel";
 import { Container } from "@/components/container";
 import { ProductsGroup } from "@/components/products-group/products-group";
-export default async function HomePage(){
+export default function HomePage(){
   return (
     <>
       <MainCarousel />
