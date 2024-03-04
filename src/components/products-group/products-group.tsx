@@ -7,7 +7,7 @@ interface ProductsGroupProps {
 }
 
 const getData = async (): Promise<ProductType[]> => {
-  const res = await fetch("http://localhost:3000/api/products/get-all-products",{
+  const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/products/get-all-products`,{
     cache: 'no-store'
   });
 

@@ -4,7 +4,7 @@ import { Product } from "@/components/product/product";
 import Image from "next/image";
 
 const getData = async (): Promise<ProductType[]> => {
-  const res = await fetch("http://localhost:3000/api/products/temp", {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/products/temp`, {
     cache: "no-store",
   });
 
@@ -17,7 +17,7 @@ const getData = async (): Promise<ProductType[]> => {
 
 const getProduct = async ({ id }: { id: string }): Promise<ProductType> => {
   const res = await fetch(
-    `http://localhost:3000/api/products/get-product/${id}`,
+    `${process.env.NEXT_PUBLIC_APP_URL}/api/products/get-product/${id}`,
     {
       cache: "no-store",
     }
