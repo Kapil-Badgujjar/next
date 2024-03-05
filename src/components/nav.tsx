@@ -1,8 +1,14 @@
 'use client'
 import Link from "next/link";
-import ButtonLogout from "@/components/button-logout";
 import { Container } from "@/components/container";
-import { useSession } from "next-auth/react"
+import { signOut, useSession } from "next-auth/react"
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+  } from "@/components/ui/popover";
+import { FaRegUserCircle } from "react-icons/fa";
+
 
 export const Nav = () => {
     const session = useSession();
@@ -21,15 +27,30 @@ export const Nav = () => {
                 Home
               </Link>
             </li>
-            {user?.name ? (
-              <ButtonLogout />
-            ) : (
-              <li>
-                <Link href="/auth/login" className="text-white hover:underline">
-                  Login
-                </Link>
-              </li>
-            )}
+              {user?.name ? (
+                <div className="flex items-center">
+                  <Popover>
+                    <PopoverTrigger className="flex items-center">
+                      <FaRegUserCircle color="white" size="1.5em" />
+                    </PopoverTrigger>
+                    <PopoverContent className="w-fit mr-2">
+                      <div className="w-full flex flex-col justify-start items-start gap-2 p-2 rounded-md">
+                        <button>My Account</button>
+                        <button>My Orders</button>
+                        <button onClick={() => signOut()} className="hover:underline">
+                          Logout
+                        </button>
+                      </div>
+                    </PopoverContent>
+                  </Popover>
+                </div>
+              ) : (
+                <li>
+                  <Link href="/auth/login" className="text-white hover:underline">
+                    Login
+                  </Link>
+                </li>
+              )}
           </ul>
         </nav>
       </Container>
