@@ -13,6 +13,7 @@ import { FaRegUserCircle } from "react-icons/fa";
 export const Nav = () => {
     const session = useSession();
     const user = session.data?.user;
+    console.log(user);
   return (
     <header className="sticky bg-blue-500 py-4">
       <Container>

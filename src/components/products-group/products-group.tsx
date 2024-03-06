@@ -6,19 +6,20 @@ interface ProductsGroupProps {
     collectionTitle: string;
 }
 
-const getData = async (): Promise<ProductType[]> => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/products/get-all-products`,{
-    cache: 'no-store'
-  });
+// const getData = async (): Promise<ProductType[]> => {
+//   const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/products/get-all-products`,{
+//     cache: 'no-store'
+//   });
 
-  if (!res.ok) {
-    throw new Error("Failed");
-  }
-  return res.json();
-};
+//   if (!res.ok) {
+//     throw new Error("Failed");
+//   }
+//   return res.json();
+// };
 
 export const ProductsGroup = async ({ collectionTitle }:ProductsGroupProps) => {
-    const products = await getData();
+    // const products = await getData();
+    const products:ProductType[] = [];
   return (
     <div className="grid flex-col gap-4 py-4">
           <h1 className="text-2xl font-semibold">{collectionTitle}</h1>
@@ -35,9 +36,9 @@ export const ProductsGroup = async ({ collectionTitle }:ProductsGroupProps) => {
             ))}
           </div>
           <div className="flex justify-center ">
-            <Link href={`/category/${collectionTitle.replace(' ','-')}`}
+            {/* <Link href={`/category/${collectionTitle.replace(' ','-')}`}
             className="bg-gray-300 text-black hover:bg-blue-500 hover:text-white"
-            >View More</Link>
+            >View More</Link> */}
           </div>
         </div>
   )

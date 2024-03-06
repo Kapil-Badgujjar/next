@@ -3,31 +3,31 @@ import { ReadMoreComments } from "@/components/buttons/read-more-comments";
 import { Product } from "@/components/product/product";
 import Image from "next/image";
 
-const getData = async (): Promise<ProductType[]> => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/products/temp`, {
-    cache: "no-store",
-  });
+// const getData = async (): Promise<ProductType[]> => {
+//   const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/products/temp`, {
+//     cache: "no-store",
+//   });
 
-  if (!res.ok) {
-    throw new Error("Failed");
-  }
+//   if (!res.ok) {
+//     throw new Error("Failed");
+//   }
 
-  return res.json();
-};
+//   return res.json();
+// };
 
-const getProduct = async ({ id }: { id: string }): Promise<ProductType> => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_APP_URL}/api/products/get-product/${id}`,
-    {
-      cache: "no-store",
-    }
-  );
-  if (!res.ok) {
-    throw new Error("Failed");
-  }
+// const getProduct = async ({ id }: { id: string }): Promise<ProductType> => {
+//   const res = await fetch(
+//     `${process.env.NEXT_PUBLIC_APP_URL}/api/products/get-product/${id}`,
+//     {
+//       cache: "no-store",
+//     }
+//   );
+//   if (!res.ok) {
+//     throw new Error("Failed");
+//   }
 
-  return res.json();
-};
+//   return res.json();
+// };
 
 export default async function ProductPage({
   params,
@@ -35,11 +35,12 @@ export default async function ProductPage({
   params: { id: string };
 }) {
   const { id } = params;
-  const currentProduct = await getProduct({ id });
-  const products: ProductType[] = await getData();
+  // const currentProduct = await getProduct({ id });
+  // const products: ProductType[] = await getData();
+  const products:ProductType[] = [];
   return (
     <div className="flex flex-col gap-16 p-8 bg-white ">
-      <div className="flex flex-col lg:flex-row flex-wrap justify-center gap-4 ">
+      {/* <div className="flex flex-col lg:flex-row flex-wrap justify-center gap-4 ">
         <div className="flex-1 md:flex min-w-fit">
           <Image className="mx-auto" src={currentProduct.image} alt="image" width={500} height={500} />
         </div>
@@ -76,7 +77,7 @@ export default async function ProductPage({
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="grid flex-col gap-4 py-4 bg-white">
         <h1 className="text-2xl font-semibold">Related Products</h1>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 justify-items-center gap-2 md:gap-4">
